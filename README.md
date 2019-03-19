@@ -1,4 +1,6 @@
 # Sof-Dot-Project
+<View this file in "Raw" form for clarity>
+
 Sof-Dot stands for "Switch on five, Double on ten"
 This is a numbering system I invented which uses dots and dashes 
 in two rows to Represent numbers in two digit increments
