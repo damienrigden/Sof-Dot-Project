@@ -20,8 +20,8 @@ _______   <--Delimeter Bar
 Then continue counting up with ones on the second row
 "Six"      "Seven"    "Eight"    "Nine"
 _______    _______    _______     _______   <--Delimeter Bar
-▄           ▄ ▄        ▄ ▄ ▄      ▄ ▄ ▄ ▄   <--Row 2
-▄▄▄         ▄▄▄        ▄▄▄        ▄▄▄       <--Row 1
+▄          ▄ ▄        ▄ ▄ ▄       ▄ ▄ ▄ ▄   <--Row 2
+▄▄▄        ▄▄▄        ▄▄▄         ▄▄▄       <--Row 1
 
 When you reach 10, the "Five Bar" doubles
 "Ten"
