@@ -162,50 +162,23 @@ class Sofdot(object):
         return self.x
     
     def __eq__(self, other):
-        if self.x == other.x:
-            return True
-        else:
-            return False
+        return self.x == other.x
         
     def __ne__(self, other):
-        if self.x != other.x:
-            return True
-        else:
-            return False
+        return self.x != other.x
         
     def __lt__(self, other):
-        if self.x < other.x:
-            return True
-        else:
-            return False
+        return self.x < other.x
     
     def __le__(self, other):
-        if self.x <= other.x:
-            return True
-        else:
-            return False
+        return self.x <= other.x
     
     def __ge__(self, other):
-        if self.x >= other.x:
-            return True
-        else:
-            return False
+        return self.x >= other.x
     
     def __gt__(self, other):
-        if self.x > other.x:
-            return True
-        else:
-            return False
+        return self.x > other.x
 
 #number = sofdot(1234567890)
 #
 #number.plot()
-
-
-
-
-
-        
-        
-        
-            
