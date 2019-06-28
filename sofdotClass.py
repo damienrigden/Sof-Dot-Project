@@ -6,7 +6,7 @@ Created on Sun Mar 17 19:28:40 2019
 @author: damienrigden
 """
 
-class sofdot(object):
+class Sofdot(object):
     def __init__(self, x):
         """ Initializes a Sof-Dot number.
             Sof-Dot stands for "Switch on Five - Double on Ten"
@@ -197,9 +197,10 @@ class sofdot(object):
         else:
             return False
 
-number = sofdot(1234567890)
+#number = sofdot(1234567890)
+#
+#number.plot()
 
-number.plot()
 
 
 
