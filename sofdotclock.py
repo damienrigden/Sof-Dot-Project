@@ -18,6 +18,8 @@ from sys import argv
 
 try:
     face = int(argv[1])
+    if face < 50:
+        face = 50
 
 except:
     print('Argument should be an integer equal to desired clock face size.')
