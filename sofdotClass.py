@@ -16,32 +16,40 @@ class Sofdot(object):
             
             Input can be a positive or negative, int or float number
             Output will always be a positive 'int' sofdot
+            Non-supported object types will return the null character
+            
             To view an object use <instance>.plot()"""
             
-        self.x = abs(int(x))
-        numstr = str(self.x)
-        split10 = []
+        try:
+            self.x = abs(int(x))
+            numstr = str(self.x)
         
-        if len(numstr) % 2 == 0:
-            for y in range(0,len(numstr),2):
-                s = ''
-                s += numstr[y]
-                s += numstr[y+1]
-                split10.append(s)
-            for z in range(len(split10)):
-                split10[z] = int(split10[z])
-        
-        else:
-            split10.append(numstr[0])
-            for y in range(1,len(numstr),2):
-                s = ''
-                s += numstr[y]
-                s += numstr[y+1]
-                split10.append(s)
-            for z in range(len(split10)):
-                split10[z] = int(split10[z])
-        split10.reverse()
-        self.split10 = split10
+            split10 = []
+            
+            if len(numstr) % 2 == 0:
+                for y in range(0,len(numstr),2):
+                    s = ''
+                    s += numstr[y]
+                    s += numstr[y+1]
+                    split10.append(s)
+                for z in range(len(split10)):
+                    split10[z] = int(split10[z])
+            
+            else:
+                split10.append(numstr[0])
+                for y in range(1,len(numstr),2):
+                    s = ''
+                    s += numstr[y]
+                    s += numstr[y+1]
+                    split10.append(s)
+                for z in range(len(split10)):
+                    split10[z] = int(split10[z])
+            split10.reverse()
+            self.split10 = split10
+
+        except:
+            self.split10 = [100]
+            self.x = None
     
     @staticmethod
     def __getsofdot(number):
@@ -70,7 +78,7 @@ class Sofdot(object):
                     7:thirtyfive, 8:thirtyfive, 9:fortyfive, 10:fortyfive, \
                     11:fiftyfive, 12:fiftyfive, 13:sixtyfive, 14:sixtyfive, \
                     15:seventyfive, 16:seventyfive, 17:eightyfive, 18:eightyfive, \
-                    19:ninetyfive, 0:zero}
+                    19:ninetyfive, 20:ninetyfive, 0:zero}
 
         onedot =   [1,0,0,0,0,0,0]
         twodot =   [1,0,1,0,0,0,0]
@@ -131,54 +139,97 @@ class Sofdot(object):
         return control
     
     def __str__(self):
-        return "Use plot() to view object. Use getcontrol() for control data"     
+        return "Use plot() to view object. Use getcontrol() for control data."     
         
     def __repr__(self):
-        return 'sofdot(%r)' % self.x
+        return 'Sofdot(%r)' % self.x
 
     def __add__(self, other):
-        return sofdot(self.x + other.x)
-    
+        try:
+            return Sofdot(self.x + other.x)
+        except:
+            return Sofdot(None)
+        
     def __sub__(self, other):
-        return sofdot(self.x - other.x)
-    
+        try:
+            return Sofdot(self.x - other.x)
+        except:
+            return Sofdot(None)
+        
     def __mul__(self, other):
-        return sofdot(self.x * other.x)
-    
+        try:
+            return Sofdot(self.x * other.x)
+        except:
+            return Sofdot(None)
+        
     def __truediv__(self, other):
         """Due to the nature of these numbers this is also a floor div"""
-        return sofdot(self.x / other.x)
-    
+        try:
+            return Sofdot(self.x // other.x)
+        except:
+            return Sofdot(None)
+        
     def __floordiv__(self, other):
-        return sofdot(self.x // other.x)
-    
+        try:
+            return Sofdot(self.x // other.x)
+        except:
+            return Sofdot(None)
+        
     def __mod__(self, other):
-        return sofdot(self.x % other.x)
-    
+        try:
+            return Sofdot(self.x % other.x)
+        except:
+            return Sofdot(None)
+        
     def __pow__(self, other):
-        return sofdot(self.x ** other.x)
-
+        try:
+            return Sofdot(self.x ** other.x)
+        except:
+            return Sofdot(None)
+        
     def __int__(self):
-        return self.x
-    
+        try:
+            return self.x
+        except:
+            return Sofdot(None)
+        
     def __eq__(self, other):
-        return self.x == other.x
+        try:
+            return self.x == other.x
+        except:
+            return Sofdot(None)
         
     def __ne__(self, other):
-        return self.x != other.x
+        try:
+            return self.x != other.x
+        except:
+            return Sofdot(None)
         
     def __lt__(self, other):
-        return self.x < other.x
-    
+        try:
+            return self.x < other.x
+        except:
+            return Sofdot(None)
     def __le__(self, other):
-        return self.x <= other.x
-    
+        try:
+            return self.x <= other.x
+        except:
+            return Sofdot(None)
+        
     def __ge__(self, other):
-        return self.x >= other.x
-    
+        try:
+            return self.x >= other.x
+        except:
+            return Sofdot(None)
+        
     def __gt__(self, other):
-        return self.x > other.x
-
-#number = sofdot(1234567890)
+        try:
+            return self.x > other.x
+        except:
+            return Sofdot(None)
+        
+#number = Sofdot(1234567890)
+#null = Sofdot(None)
 #
 #number.plot()
+#null.plot()
