@@ -19,7 +19,7 @@ class Sofdot(object):
             Non-supported object types will return the null character
             
             To view an object use <instance>.plot()"""
-            
+        
         try:
             self.x = abs(int(x))
             numstr = str(self.x)
@@ -48,8 +48,11 @@ class Sofdot(object):
             self.split10 = split10
 
         except:
+            print("Improper use detected, argument: '{}' of Type: '{}'".format(x, str(type(x))[8:-2]))
+            print("Sofdot argument must be type 'int' or 'float'")
             self.split10 = [100]
             self.x = None
+            
     
     @staticmethod
     def __getsofdot(number):
@@ -136,9 +139,12 @@ class Sofdot(object):
         for number in self.split10:
             sofdot = self.__getsofdot(number)
             control.append(sofdot)
-        return control
+        return control            
     
     def __str__(self):
+        if self.x == None:
+            print('--Null Sofdot Detected--\n')
+        
         return "Use plot() to view object. Use getcontrol() for control data."     
         
     def __repr__(self):
@@ -146,88 +152,140 @@ class Sofdot(object):
 
     def __add__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return Sofdot(self.x + other.x)
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for +: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
     def __sub__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return Sofdot(self.x - other.x)
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for -: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
     def __mul__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return Sofdot(self.x * other.x)
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for *: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
     def __truediv__(self, other):
-        """Due to the nature of these numbers this is also a floor div"""
         try:
-            return Sofdot(self.x // other.x)
-        except:
-            return Sofdot(None)
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
+            return Sofdot(self.x / other.x)
         
+        except:
+            raise TypeError("unsupported operand type(s) for /: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
     def __floordiv__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return Sofdot(self.x // other.x)
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for //: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+             
     def __mod__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return Sofdot(self.x % other.x)
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for %: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+             
     def __pow__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')
+            
             return Sofdot(self.x ** other.x)
-        except:
-            return Sofdot(None)
         
-    def __int__(self):
-        try:
-            return self.x
         except:
-            return Sofdot(None)
+            raise TypeError("unsupported operand type(s) for ** or pow(): 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
+    def __int__(self):
+        if self.x == None:
+            print('--Null Sofdot Detected--\n')
+        
+        return self.x       
         
     def __eq__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')
+            
             return self.x == other.x
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for ==: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+     
     def __ne__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')
+            
             return self.x != other.x
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for !=: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+       
     def __lt__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return self.x < other.x
+        
         except:
-            return Sofdot(None)
+            raise TypeError("unsupported operand type(s) for <: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+   
     def __le__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return self.x <= other.x
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for <=: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+   
     def __ge__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return self.x >= other.x
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for >=: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+   
     def __gt__(self, other):
         try:
+            if self.x == None or other.x == None:
+                print('--Null Sofdot Detected--\n')            
+            
             return self.x > other.x
-        except:
-            return Sofdot(None)
         
+        except:
+            raise TypeError("unsupported operand type(s) for >: 'Sofdot' and '{}'".format(str(type(other))[8:-2]))
+           
 #number = Sofdot(1234567890)
 #null = Sofdot(None)
 #
