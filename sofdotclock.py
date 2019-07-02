@@ -238,6 +238,4 @@ for geomb in bargeom:
 
 
 if __name__ == '__main__':
-    if type(face) == int:
-        main()
-    
+    main() 
